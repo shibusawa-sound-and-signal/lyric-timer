@@ -7,5 +7,34 @@
 <script src="https://sdk.scdn.co/spotify-player.js"></script>
 <script src="secrets.js"></script>
 <script src="script.js"></script>
+<link href="style.css" rel="stylesheet">
+<header>
+    <h1>
+        Lyric Timer
+    </h1>
+</header>
+<section>
+    <h2 id="song-title">
+        ~~~~~~ Song Artist / Title ~~~~~~
+    </h2>
+    <h3>Lyrics</h3>
+    <div id="lyrics">
+        <pre>
+        [Verse 1]
+            Nee <strong>dore</strong> kurai
+        Nee waraeba ii?
+        Ima tsutaetai koto yoso ni
+
+        [Chorus 1]
+        Let me face, let me face, let me face my fears
+        Oh, let me face, let me face, let me face my fears
+        Watashi no chizu ni notte inai
+        Michi ni tachitai
+            </pre>
+    </div>
+</section>
+<script>
+    init({songTitleElement: document.querySelector('#song-title'), window:window})
+</script>
 </body>
 </html>
