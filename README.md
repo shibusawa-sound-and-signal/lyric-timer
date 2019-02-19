@@ -5,8 +5,10 @@
 
 For now, start the static server of your choice
 
-`npm install -g http-server`
-`http-server`
+```
+npm install -g http-server
+http-server
+```
 
 ## Create a secrets.js file
 The contents of the file should look like this:
@@ -19,9 +21,15 @@ It appears that these keys have short expiration times, so you may have to gener
 
 ## Feature Backlog
 
-- [ ] Connect the sdk 
-- [ ] Scaffold the UI
-- [ ] Show track and artist name onscreen (from spotify)
+- [X] Connect the sdk
+- [X] Scaffold the UI
+- [X] Show track and artist name onscreen (from spotify)
+    - [ ] Think about what to do about the waiting-to-connect state. Probably shouldn't show a different placeholder text at first ("~~~~~~ Song Artist / Title ~~~~~~") and later ("No Song Playing")
+    - [ ] Refactor to improve the state, clean up noise from the boilerplate
+    - [ ] Explore using settimeout / request animation frame to set up polling the player for state
+    - [ ] Pull the lyrics out of the HTML and into something like localStorage: use spotify ID as key, lyrics as value
+    - [ ] What about disconnecting, or changing tracks?
+- [ ] Tests??? (pull in Jasmine)
 - [ ] Show lyrics onscreen
 - [ ] Show a word bolded (first word, first line)
 - [ ] Up down left right moves to next word in that direction 
