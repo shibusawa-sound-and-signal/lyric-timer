@@ -14,31 +14,49 @@ let setupSpotifyDebugging = (player) => {
   );
 };
 
-window.init = ({songTitleElement, window}) => {
+window.init = ({songTitleElement, songPositionElement, window}) => {
   let state = {
-    songTitle: '(Waiting for Spotify Player to Connect)'
+    songTitle: '(Waiting for Spotify Player to Connect)',
+    playbackTime: 0
   };
 
   let draw = () => {
     songTitleElement.innerText = state.songTitle || "No Song Playing";
+    songPositionElement.innerText = state.playbackTime;
   };
 
 
+  function updateFromPlayerState(playerState) {
+    state.songTitle = playerState.track_window.current_track.name;
+    state.playbackTime = playerState.position;
+    console.log(state);
+    // TODO: throws an error if playerState is null; playerState is null when player disconnects
+  }
+
+  function listenForNextUpdate(player) {
+    setInterval(() => {
+      player.getCurrentState().then(playerState => {
+        updateFromPlayerState(playerState);
+        draw();
+        listenForNextUpdate(player);
+      });
+    }, 100);
+  }
+
   window.onSpotifyWebPlaybackSDKReady = () => {
-    const token = window.spotifyKey;
     window.player = new Spotify.Player({
       name: 'Shibusawa Lyric Timer',
       getOAuthToken: cb => {
-        cb(token);
+        cb(window.spotifyKey);
       }
     });
 
-    player.addListener('player_state_changed', playerState => { console.log(playerState);
-      state.songTitle = playerState.track_window.current_track.name;
-      // TODO: throws an error if playerState is null; playerState is null when player disconnects
-      draw();
-    });
+    // player.addListener('player_state_changed', playerState => {
+    //   updateFromPlayerState(playerState);
+    //   draw();
+    // });
 
+    listenForNextUpdate(player);
     setupSpotifyDebugging(player);
     player.connect();
   };

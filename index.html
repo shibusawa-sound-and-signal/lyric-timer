@@ -14,7 +14,15 @@
     </h1>
 </header>
 <section>
-    <h2 id="song-title"/>
+    <h2 id="song-title"></h2>
+    <p>
+        <label>
+            Current Song Position:
+        </label>
+        <span id="song-position">
+
+        </span>
+    </p>
     <h3>Lyrics</h3>
     <div id="lyrics">
         <pre>
@@ -32,7 +40,7 @@
     </div>
 </section>
 <script>
-    init({songTitleElement: document.querySelector('#song-title'), window:window})
+    init({songTitleElement: document.querySelector('#song-title'), songPositionElement: document.querySelector('#song-position'), window:window})
 </script>
 </body>
 </html>
