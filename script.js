@@ -14,6 +14,13 @@ let setupSpotifyDebugging = (player) => {
   );
 };
 
+let formatMilliseconds = ms => {
+  let totalSeconds = Math.floor((ms / 1000));
+  let minutes = Math.floor(totalSeconds/60);
+  let seconds = (totalSeconds % 60).toString().padStart(2, '0');
+  return `${minutes}:${seconds}`;
+};
+
 window.init = ({songTitleElement, songPositionElement, window}) => {
   let state = {
     songTitle: '(Waiting for Spotify Player to Connect)',
@@ -22,7 +29,7 @@ window.init = ({songTitleElement, songPositionElement, window}) => {
 
   let draw = () => {
     songTitleElement.innerText = state.songTitle || "No Song Playing";
-    songPositionElement.innerText = state.playbackTime;
+    songPositionElement.innerText = formatMilliseconds(state.playbackTime);
   };
 
 
