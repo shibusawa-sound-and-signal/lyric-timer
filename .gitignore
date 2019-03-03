@@ -2,3 +2,4 @@
 *.iml
 .idea/
 secrets.js
+node_modules/

@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "jasmine": "^3.3.1"
+  },
+  "scripts": { "test": "jasmine" }
+}

@@ -26,14 +26,14 @@ It appears that these keys have short expiration times, so you may have to gener
 - [X] Show track and artist name onscreen (from spotify)
     - [X] Think about what to do about the waiting-to-connect state. Probably shouldn't show a different placeholder text at first ("~~~~~~ Song Artist / Title ~~~~~~") and later ("No Song Playing")
     - [X] Refactor to improve the state, clean up noise from the boilerplate
-    - [ ] ~~Explore using settimeout / request animation frame to set up polling the player for state~~
-        - [ ] show song position in seconds
-- [ ] Tests??? (pull in Jasmine)
+- [X] show song position in seconds
+- [X] Tests??? (pull in Jasmine)
 - [ ] Pull the lyrics out of the HTML and into a map: use spotify ID as key, lyrics as value
 - [ ] Handle authentication failed error (`authentication_error Object { message: "Authentication failed" }`)
 - [ ] periodically check the player state, and resync the play time from that (do a setInterval based on current playback time modulo 1000)
     - [ ] What about disconnecting, or changing tracks?
 - [ ] UX for interacting with song timings
+- [ ] add license to package.json file
 
 - [ ] Add a "Preview" button that moves bolding of words around with timing
 - [ ] Download timings as JSON file

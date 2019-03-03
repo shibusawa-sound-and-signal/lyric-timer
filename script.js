@@ -21,7 +21,7 @@ let formatMilliseconds = ms => {
   return `${minutes}:${seconds}`;
 };
 
-window.init = ({songTitleElement, songPositionElement, window}) => {
+let init = ({songTitleElement, songPositionElement, window}) => {
   let state = {
     songTitle: '(Waiting for Spotify Player to Connect)',
     playbackTime: 0
@@ -70,3 +70,5 @@ window.init = ({songTitleElement, songPositionElement, window}) => {
 
   draw();
 };
+
+(typeof module !== 'undefined') && (module.exports = {formatMilliseconds});
